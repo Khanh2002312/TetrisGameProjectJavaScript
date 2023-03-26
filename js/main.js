@@ -300,18 +300,17 @@ function checkCollision() {
 
 // kiểm tra đụng với block khác và dừng
 function checkCollisionBlock() {
-    for (let i = 0; i < randomBlock.length; i++) {
-        if (document.getElementsByClassName('cell-' + (randomBlock[i][0] + moveY) + '-' + (randomBlock[i][1] + moveX))[0].classList.contains('checked')) {
-            for (let j = 0; j < randomBlock.length; j++) {
-                document.getElementsByClassName('cell-' + (randomBlock[j][0] + moveY - 1) + '-' + (randomBlock[j][1] + moveX))[0].classList.replace('tetromino', 'checked');
-                document.getElementsByClassName('cell-' + (randomBlock[j][0] + moveY - 1) + '-' + (randomBlock[j][1] + moveX))[0].classList.add('checked' + blockColor);
-            }
-            checkGameover();
-
-            playPieceLanded();
-            reset();
-
+    if (document.getElementsByClassName('cell-' + (randomBlock[0][0] + moveY) + '-' + (randomBlock[0][1] + moveX))[0].classList.contains('checked') ||
+        document.getElementsByClassName('cell-' + (randomBlock[1][0] + moveY) + '-' + (randomBlock[1][1] + moveX))[0].classList.contains('checked') ||
+        document.getElementsByClassName('cell-' + (randomBlock[2][0] + moveY) + '-' + (randomBlock[2][1] + moveX))[0].classList.contains('checked') ||
+        document.getElementsByClassName('cell-' + (randomBlock[3][0] + moveY) + '-' + (randomBlock[3][1] + moveX))[0].classList.contains('checked')) {
+        for (let i = 0; i < randomBlock.length; i++) {
+            document.getElementsByClassName('cell-' + (randomBlock[i][0] + moveY - 1) + '-' + (randomBlock[i][1] + moveX))[0].classList.replace('tetromino', 'checked');
+            document.getElementsByClassName('cell-' + (randomBlock[i][0] + moveY - 1) + '-' + (randomBlock[i][1] + moveX))[0].classList.add('checked' + blockColor);
         }
+        checkGameover();
+        playPieceLanded();
+        reset();
     }
 }
 
@@ -324,7 +323,7 @@ function resetShape() {
     o_shape = [[1, 1], [1, 2], [2, 1], [2, 2]];
     s_shape = [[1, 3], [1, 2], [2, 2], [2, 1]];
     z_shape = [[1, 1], [1, 2], [2, 2], [2, 3]];
-    tetrominos = [t_shape, o_shape, l_shape, j_shape, i_shape, s_shape, z_shape];
+    tetrominos = [t_shape, o_shape, l_shape, j_shape, i_shape, s_shape, z_shape]
 }
 
 // reset mọi trạng thái về ban đầu
@@ -336,10 +335,10 @@ function reset() {
     moveX = 4;
     moveRight = true;
     moveLeft = true;
-    randomBlock = tetrominos[currentIndex];
     rotate = 1;
     count = 1;
     copy = [[], [], [], []];
+    randomBlock = tetrominos[currentIndex];
     index = tetrominos.indexOf(randomBlock);
     blockImage = tetroBackground[index];
     blockColor = color[index];
@@ -851,7 +850,9 @@ function musicOption() {
         musicButton.innerHTML = 'MUSIC: OFF';
     } else {
         music.currentTime = 0;
+        music.volume = 0.1;
         music.play();
+        music.loop = true;
         musicToggle = true;
         musicCondition = true;
         musicButton.innerHTML = 'MUSIC: ON';
