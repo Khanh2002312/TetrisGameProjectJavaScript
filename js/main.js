@@ -80,7 +80,7 @@ function playGameOver() {
 function playLineClear() {
     if (sound) {
         var audio = new Audio('./music/lineClear.mp3');
-        audio.volume = 0.5;
+        audio.volume = 0.3;
         audio.play();
     }
 }
