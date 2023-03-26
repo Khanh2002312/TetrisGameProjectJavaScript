@@ -69,7 +69,7 @@ function playRotateSound() {
 
 // nhạc game over
 function playGameOver() {
-    if (musicCondition) {
+    if (sound) {
         var audio = new Audio('./music/gameOver.mp3');
         audio.volume = 0.5;
         audio.play();
@@ -96,7 +96,7 @@ function playMoveSound() {
 
 // nhạc hoàn thành level
 function playNextLevel() {
-    if (musicCondition) {
+    if (sound) {
         var audio = new Audio('./music/nextLevel.mp3');
         audio.volume = 0.5;
         audio.play();
