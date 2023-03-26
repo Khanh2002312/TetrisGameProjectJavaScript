@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tetris game</title>
+    <script src="js/jquery-3.6.3.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+          integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+</head>
+<style>
+    body {
+        background-image: url('img/background.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+</style>
+<body>
+<div class="container">
+    <div class="mainMenu">
+        <img src="img/tetris-logo.png" alt="" style="width: max-content;height: 15%;">
+        <img src="img/arrow.png" alt="">
+        <div class="buttonContainer">
+            <button onclick="playButton()" type="button" class="btn btn-success" style="border: 10px solid #3aff67;">
+                <i class="fa-solid fa-play"></i> PLAY
+            </button>
+            <button onclick="levelButton()" type="button" class="btn btn-warning" style="border: 10px solid #bf9002;">
+                <i class="fa-solid fa-signal"></i> LEVEL
+            </button>
+            <button onclick="optionButton()" type="button" class="btn btn-info" style="border: 10px solid #137e8f;">
+                <i class="fa-solid fa-gear"></i> SETTING
+            </button>
+            <button onclick="window.close();" type="button" class="btn btn-danger" style="border: 10px solid #a4333e;">
+                <i class="fa-solid fa-right-from-bracket"></i> EXIT
+            </button>
+        </div>
+        <div class="buttonContainerLevel">
+            <button onclick="level2()" type="button" class="btn btn-success" style="border: 10px solid #3aff67;">
+                LEVEL 2
+            </button>
+            <button onclick="level3()" type="button" class="btn btn-success" style="border: 10px solid #3aff67;">
+                LEVEL 3
+            </button>
+            <button onclick="level4()" type="button" class="btn btn-warning" style="border: 10px solid #bf9002;">
+                LEVEL 4
+            </button>
+            <button onclick="level5()" type="button" class="btn btn-warning" style="border: 10px solid #bf9002;">
+                LEVEL 5
+            </button>
+            <button onclick="level6()" type="button" class="btn btn-danger" style="border: 10px solid #a4333e">
+                LEVEL 6
+            </button>
+            <button onclick="backButton()" type="button" class="btn btn-primary" style="border: 10px solid #419dff;">
+                <i class="fa-solid fa-backward"></i> BACK
+            </button>
+        </div>
+        <div class="buttonContainerOption">
+            <button id="music" onclick="musicOption()" type="button" class="btn btn-success"
+                    style="border: 10px solid #3aff67;">
+                MUSIC: ON
+            </button>
+            <button id="sound" onclick="soundOption()" type="button" class="btn btn-success"
+                    style="border: 10px solid #3aff67;">
+                SOUND: ON
+            </button>
+            <button onclick="backButton()" type="button" class="btn btn-primary"
+                    style="border: 10px solid #419dff;">
+                <i class="fa-solid fa-backward"></i> BACK
+            </button>
+
+        </div>
+    </div>
+    <div class="gameBoard">
+        <div id="miniMonitor"></div>
+        <div class="coverMini">
+
+        </div>
+        <div id="scoreContainer">
+            <div class="title">
+                <h3>
+                    SCORE
+                </h3>
+            </div>
+            <div id="score">0</div>
+        </div>
+        <div id="scoreContainer" style="margin-top: 245px;">
+            <div class="title">
+                <h3>
+                    LEVEL
+                </h3>
+            </div>
+            <div id="level">0</div>
+        </div>
+        <div class="buttonGroup">
+            <button onclick="pauseButton()" type="button" class="btn btn-success btn-pause"
+                    style="border: 10px solid #3aff67;">
+                <i class="fa-solid fa-pause"></i> PAUSE
+            </button>
+            <button onclick="menuButton()" type="button" class="btn btn-warning"
+                    style="border: 10px solid #bf9002;font-size: 15px;padding: 6px 0 ;">
+                <i class="fa-solid fa-list"></i> MAIN MENU
+            </button>
+            <button onclick="window.close();" type="button" class="btn btn-danger" style="border: 10px solid #a4333e;">
+                <i class="fa-solid fa-right-from-bracket"></i> EXIT
+            </button>
+
+        </div>
+        <div class="cover"></div>
+        <div class="cover2"></div>
+        <div id="game"></div>
+        <div class="levelModal">
+            <div class="modalContent">
+                <div class="titleModal">
+                    <h1>YOU WIN</h1>
+                    <div class="buttonContainer">
+                        <button onclick="again()" type="button" class="btn btn-danger"
+                                style="border: 10px solid #a4333e;">
+                            AGAIN
+                        </button>
+                        <button onclick="nextLevel()" type="button" class="btn btn-success"
+                                style="border: 10px solid #3aff67;">
+                            NEXT
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
