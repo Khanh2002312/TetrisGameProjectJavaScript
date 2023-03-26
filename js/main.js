@@ -14,8 +14,8 @@ let blockColor;
 let blockImage;
 let moveX = 4;
 let moveY = 0;
-let moveLeft = true;
-let moveRight = true;
+let moveLeft = false;
+let moveRight = false;
 let color = ['red', 'antiquewhite', 'deepskyblue', 'cyan', 'salmon', 'yellow', 'orange']
 let rotate = 1;
 let copy = [[], [], [], []];
@@ -168,6 +168,7 @@ function modalFinish() {
 
 window.onload
 $(document).ready(function () {
+    document.getElementsByClassName('mainMenu')[0].style.display = 'flex';
     setInterval(playLineClear, 1);
     currentIndex = parseInt(Math.random() * 7);
     nextIndex = parseInt(Math.random() * 7);
@@ -188,10 +189,10 @@ function gameLoop() {
     drawB = setInterval(function () {
         drawBlock(randomBlock);
     }, 1);
-    runB = setInterval(run, speed);
-    check5 = setInterval(doubleCheck, 1);
     check1 = setInterval(checkCollision, 1);
     check2 = setInterval(checkCollisionBlock, 1);
+    runB = setInterval(run, speed);
+    check5 = setInterval(doubleCheck, 1);
     check3 = setInterval(function () {
         checkWallAndHitBlock(randomBlock);
     }, 1);
@@ -344,7 +345,6 @@ function reset() {
     blockColor = color[index];
     nextIndex = parseInt(Math.random() * 7);
     drawNextBlock();
-
 }
 
 // check line và xóa dòng khi lấp đầy một hàng đồng thời cộng điểm
@@ -407,8 +407,6 @@ function checkWallAndHitBlock(shape) {
         } else if (document.getElementsByClassName('cell-' + (shape[i][0] + moveY) + '-' + (shape[i][1] + moveX - 1))[0].classList.contains('checked')) {
             moveLeft = false;
         }
-
-
     }
 }
 
@@ -716,39 +714,32 @@ function checkGameover() {
 // gắn event di chuyển cho các nút bấm
 document.addEventListener('keydown', function (event) {
     if (pause != 1) {
-
         if (event.keyCode === 37) {
             // Left arrow key pressed
-            if (document.getElementsByClassName('mainMenu')[0].style.display == 'none') {
-                console.log(document.getElementsByClassName('mainMenu')[0].style.display);
-                if (moveLeft == true) {
-                    moveX -= 1
-                    playMoveSound();
-                }
+            if (moveLeft == true) {
+                moveX -= 1;
+                playMoveSound();
             }
-
         } else if (event.keyCode === 38) {
             // Up arrow key pressed
-            if (document.getElementsByClassName('mainMenu')[0].style.display == 'none') {
-                rotateBlock();
-                if (rotate >= 4) {
-                    rotate = 1;
-                } else {
-                    rotate++;
-                }
-            }
-        } else if (event.keyCode === 39) {
-            // Right arrow key pressed
-            if (document.getElementsByClassName('mainMenu')[0].style.display == 'none') {
-                if (moveRight == true) {
-                    moveX += 1;
-                    playMoveSound();
-                }
+            rotateBlock();
+
+            if (rotate >= 4) {
+                rotate = 1;
+            } else {
+                rotate++;
             }
 
+        } else if (event.keyCode === 39) {
+            // Right arrow key pressed
+
+            if (moveRight == true) {
+                moveX += 1;
+                playMoveSound();
+            }
         } else if (event.keyCode === 40) {
             // Down arrow key pressed
-            if (document.getElementsByClassName('mainMenu')[0].style.display == 'none') {
+            if (document.getElementsByClassName('mainMenu')[0].style.display != 'flex') {
                 run(randomBlock);
             }
         }
