@@ -41,6 +41,7 @@ let sound = true;
 let musicCondition = true;
 let musicToggle = true;
 let music = new Audio('./music/theme.mp3');
+let lineClear = false;
 
 // nhạc nền
 function playBackgroundSound() {
@@ -79,9 +80,12 @@ function playGameOver() {
 // âm thanh khi xóa dòng
 function playLineClear() {
     if (sound) {
-        var audio = new Audio('./music/lineClear.mp3');
-        audio.volume = 0.3;
-        audio.play();
+        if (lineClear) {
+            var audio = new Audio('./music/lineClear.mp3');
+            audio.volume = 0.3;
+            audio.play();
+            lineClear = false;
+        }
     }
 }
 
@@ -161,8 +165,10 @@ function modalFinish() {
         '\n' +
         '                    </div>';
 }
+
 window.onload
 $(document).ready(function () {
+    setInterval(playLineClear, 1);
     currentIndex = parseInt(Math.random() * 7);
     nextIndex = parseInt(Math.random() * 7);
     miniMonitor();
@@ -323,6 +329,7 @@ function resetShape() {
 // reset mọi trạng thái về ban đầu
 function reset() {
     resetShape();
+    lineClear = false;
     currentIndex = nextIndex;
     moveY = 0;
     moveX = 4;
@@ -351,7 +358,7 @@ function checkLine() {
         }
         if (countChecked == col) {
             score += 10;
-            playLineClear();
+            lineClear = true;
             scoreDiv.innerHTML = score;
             checkLevel();
             for (let j = 1; j <= col; j++) {
@@ -375,9 +382,7 @@ function checkLine() {
                     }
                 }
             }
-
         }
-
     }
 }
 
