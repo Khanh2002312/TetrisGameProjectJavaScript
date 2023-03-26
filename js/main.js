@@ -163,6 +163,7 @@ function modalFinish() {
 }
 
 $(document).ready(function () {
+    playBackgroundSound();
     currentIndex = parseInt(Math.random() * 7);
     nextIndex = parseInt(Math.random() * 7);
     miniMonitor();
@@ -174,7 +175,7 @@ $(document).ready(function () {
         drawNext(tetrominos[nextIndex][i][0], tetrominos[nextIndex][i][1])
     }
     scoreDiv.innerHTML = score;
-    playBackgroundSound();
+
 })
 
 function gameLoop() {
@@ -885,37 +886,37 @@ function backButton() {
 function checkLevel() {
     if (level < 3) {
         if (score == 100) {
+            playNextLevel();
             clearAllInterval();
             level += 1;
             modalWin();
             showModal();
-            playNextLevel();
         }
     } else if (level == 3 || level == 4) {
         if (score == 150) {
+            playNextLevel();
             clearAllInterval();
             level += 1;
             modalWin();
             showModal();
-            playNextLevel();
 
         }
     } else if (level == 5) {
         if (score == 200) {
+            playNextLevel();
             clearAllInterval();
             level += 1;
             modalWin();
             showModal();
-            playNextLevel();
 
         }
     } else if (level == 6) {
         if (score == 200) {
+            playNextLevel();
             clearAllInterval();
             level += 1;
             modalFinish();
             showModal();
-            playNextLevel();
 
         }
     }
@@ -942,6 +943,7 @@ function hideModal() {
 
 // function cho nút chơi lại
 function again() {
+    playButtonClick();
     clearAllInterval();
     hideModal();
     if (level <= 7) {
@@ -963,8 +965,6 @@ function again() {
             randomRemoveInterval = setInterval(randomRemove, 10000);
             break;
     }
-
-
 }
 
 // function chuyển sang level mới
