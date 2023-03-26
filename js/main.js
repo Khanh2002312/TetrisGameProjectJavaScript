@@ -716,34 +716,39 @@ function checkGameover() {
 // gắn event di chuyển cho các nút bấm
 document.addEventListener('keydown', function (event) {
     if (pause != 1) {
+
         if (event.keyCode === 37) {
             // Left arrow key pressed
-            if (moveLeft == true) {
-                moveX -= 1
-                playMoveSound();
+            if (document.getElementsByClassName('mainMenu')[0].style.display == 'none') {
+                console.log(document.getElementsByClassName('mainMenu')[0].style.display);
+                if (moveLeft == true) {
+                    moveX -= 1
+                    playMoveSound();
+                }
             }
 
         } else if (event.keyCode === 38) {
             // Up arrow key pressed
-            rotateBlock();
-
-            if (rotate >= 4) {
-                rotate = 1;
-            } else {
-                rotate++;
+            if (document.getElementsByClassName('mainMenu')[0].style.display == 'none') {
+                rotateBlock();
+                if (rotate >= 4) {
+                    rotate = 1;
+                } else {
+                    rotate++;
+                }
             }
-
         } else if (event.keyCode === 39) {
             // Right arrow key pressed
-
-            if (moveRight == true) {
-                moveX += 1;
-                playMoveSound();
+            if (document.getElementsByClassName('mainMenu')[0].style.display == 'none') {
+                if (moveRight == true) {
+                    moveX += 1;
+                    playMoveSound();
+                }
             }
 
         } else if (event.keyCode === 40) {
             // Down arrow key pressed
-            if (document.getElementsByClassName('mainMenu')[0].style.display != 'flex') {
+            if (document.getElementsByClassName('mainMenu')[0].style.display == 'none') {
                 run(randomBlock);
             }
         }
