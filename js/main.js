@@ -161,9 +161,8 @@ function modalFinish() {
         '\n' +
         '                    </div>';
 }
-
+window.onload
 $(document).ready(function () {
-    playBackgroundSound();
     currentIndex = parseInt(Math.random() * 7);
     nextIndex = parseInt(Math.random() * 7);
     miniMonitor();
