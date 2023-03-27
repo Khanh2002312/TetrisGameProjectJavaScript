@@ -39,12 +39,13 @@ let modalContent = document.querySelector('.modalContent');
 let gameBoard = document.getElementById('game');
 let sound = true;
 let musicCondition = true;
-let musicToggle = true;
+let musicToggle = false;
 let music = new Audio('./music/theme.mp3');
 let lineClear = false;
 
 // nhạc nền
 function playBackgroundSound() {
+    music.currentTime = 0;
     music.volume = 0.1;
     music.play();
     music.loop = true;
@@ -168,9 +169,6 @@ function modalFinish() {
 
 window.onload
 $(document).ready(function () {
-    music.volume = 0.1;
-    music.play();
-    music.loop = true;
     document.getElementsByClassName('mainMenu')[0].style.display = 'flex';
     setInterval(playLineClear, 1);
     currentIndex = parseInt(Math.random() * 7);
@@ -852,10 +850,7 @@ function musicOption() {
         musicCondition = false;
         musicButton.innerHTML = 'MUSIC: OFF';
     } else {
-        music.currentTime = 0;
-        music.volume = 0.1;
-        music.play();
-        music.loop = true;
+        playBackgroundSound();
         musicToggle = true;
         musicCondition = true;
         musicButton.innerHTML = 'MUSIC: ON';
