@@ -686,7 +686,7 @@ function againGameover() {
             break;
         case 6:
             runCoverInterval = setInterval(runCover, 2000);
-            randomRemoveInterval = setInterval(randomRemove, 10000);
+            randomRemoveInterval = setInterval(randomRemove, 15000);
             break;
     }
 
@@ -779,7 +779,7 @@ function pauseButton() {
                 break;
             case 6:
                 runCoverInterval = setInterval(runCover, 2000);
-                randomRemoveInterval = setInterval(randomRemove, 10000);
+                randomRemoveInterval = setInterval(randomRemove, 15000);
                 break;
         }
         document.getElementsByClassName('btn-pause')[0].innerHTML = '<i class="fa-solid fa-pause"></i> PAUSE';
@@ -961,7 +961,7 @@ function again() {
             break;
         case 6:
             runCoverInterval = setInterval(runCover, 2000);
-            randomRemoveInterval = setInterval(randomRemove, 10000);
+            randomRemoveInterval = setInterval(randomRemove, 15000);
             break;
     }
 }
@@ -1122,7 +1122,7 @@ function level5() {
 function level6() {
     resize15Row();
     level = 6;
-    speed = 200;
+    speed = 250;
     coverHeight = 120;
     coverPosition = 530 - coverHeight;
     playButton();
@@ -1132,6 +1132,6 @@ function level6() {
     cover2.style.animation = 'fadeinout 3s linear forwards infinite';
     runCoverInterval = setInterval(runCover, 2000);
     miniCover.style.display = 'block';
-    randomRemoveInterval = setInterval(randomRemove, 10000);
+    randomRemoveInterval = setInterval(randomRemove, 15000);
 
 }
