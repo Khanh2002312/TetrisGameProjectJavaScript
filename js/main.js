@@ -168,6 +168,9 @@ function modalFinish() {
 
 window.onload
 $(document).ready(function () {
+    music.volume = 0.1;
+    music.play();
+    music.loop = true;
     document.getElementsByClassName('mainMenu')[0].style.display = 'flex';
     setInterval(playLineClear, 1);
     currentIndex = parseInt(Math.random() * 7);
