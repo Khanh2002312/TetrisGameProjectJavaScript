@@ -306,10 +306,10 @@ function checkCollisionBlock() {
         document.getElementsByClassName('cell-' + (randomBlock[2][0] + moveY) + '-' + (randomBlock[2][1] + moveX))[0].classList.contains('checked') ||
         document.getElementsByClassName('cell-' + (randomBlock[3][0] + moveY) + '-' + (randomBlock[3][1] + moveX))[0].classList.contains('checked')) {
         for (let i = 0; i < randomBlock.length; i++) {
+            checkGameover();
             document.getElementsByClassName('cell-' + (randomBlock[i][0] + moveY - 1) + '-' + (randomBlock[i][1] + moveX))[0].classList.replace('tetromino', 'checked');
             document.getElementsByClassName('cell-' + (randomBlock[i][0] + moveY - 1) + '-' + (randomBlock[i][1] + moveX))[0].classList.add('checked' + blockColor);
         }
-        checkGameover();
         playPieceLanded();
         reset();
     }
@@ -910,7 +910,7 @@ function checkLevel() {
 
         }
     } else if (level == 6) {
-        if (score == 200) {
+        if (score == 150) {
             playNextLevel();
             clearAllInterval();
             level += 1;
