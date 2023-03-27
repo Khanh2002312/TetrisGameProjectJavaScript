@@ -131,6 +131,8 @@ function modalGameover() {
         '                        </button>\n' +
         '\n' +
         '                    </div>';
+    playGameOver();
+
 }
 
 // chỉnh tille và nút cho modal win
@@ -255,7 +257,7 @@ function drawNextBlock() {
 
 // vẽ khối
 function drawBlock(shape) {
-    if (checkCollision(randomBlock) || checkCollisionBlock(randomBlock)) {
+    if (checkCollision() || checkCollisionBlock()) {
         return;
     } else {
         for (let i = 1; i <= row; i++) {
@@ -279,7 +281,7 @@ function drawBlock(shape) {
 
 // di chuyển khối từ trên xuống
 function run() {
-    if (checkCollision(randomBlock) || checkCollisionBlock(randomBlock)) {
+    if (checkCollision() || checkCollisionBlock()) {
         return;
     } else {
         moveY++;
@@ -306,10 +308,10 @@ function checkCollisionBlock() {
         document.getElementsByClassName('cell-' + (randomBlock[2][0] + moveY) + '-' + (randomBlock[2][1] + moveX))[0].classList.contains('checked') ||
         document.getElementsByClassName('cell-' + (randomBlock[3][0] + moveY) + '-' + (randomBlock[3][1] + moveX))[0].classList.contains('checked')) {
         for (let i = 0; i < randomBlock.length; i++) {
-            checkGameover();
             document.getElementsByClassName('cell-' + (randomBlock[i][0] + moveY - 1) + '-' + (randomBlock[i][1] + moveX))[0].classList.replace('tetromino', 'checked');
             document.getElementsByClassName('cell-' + (randomBlock[i][0] + moveY - 1) + '-' + (randomBlock[i][1] + moveX))[0].classList.add('checked' + blockColor);
         }
+        checkGameover();
         playPieceLanded();
         reset();
     }
@@ -704,7 +706,6 @@ function checkGameover() {
         document.getElementsByClassName('cell-' + j + '-' + 7)[0].classList.contains('checked') ||
         document.getElementsByClassName('cell-' + j + '-' + 8)[0].classList.contains('checked')
     ) {
-        playGameOver();
         clearAllInterval();
         modalGameover();
         showModal();
