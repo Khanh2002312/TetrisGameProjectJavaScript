@@ -346,3 +346,24 @@ button:hover {
     color: #00ff95;
 }
 
+@media only screen and (max-width: 428px) {
+
+    body {
+        background-image: url('../img/background2.jpg') !important;
+        background-repeat: repeat !important;
+        background-size: auto !important;
+    }
+
+    .container {
+        width: 95%;
+        margin-left: 7px;
+    }
+
+    .container .mainMenu .buttonContainer {
+        width: 80%;
+    }
+
+    .container .mainMenu .buttonContainerLevel, .container .mainMenu .buttonContainerOption {
+        height: 30%;
+    }
+}
