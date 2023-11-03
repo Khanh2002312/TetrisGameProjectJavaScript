@@ -911,7 +911,7 @@ function checkLevel() {
 
         }
     } else if (level == 6) {
-        if (score == 150) {
+        if (score == 200) {
             playNextLevel();
             clearAllInterval();
             level += 1;
