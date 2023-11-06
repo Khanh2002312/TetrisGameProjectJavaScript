@@ -350,7 +350,7 @@ button:hover {
 
     body {
         background-image: url('../img/background2.jpg') !important;
-        background-repeat: repeat !important;
+        background-repeat-y: repeat !important;
         background-size: auto !important;
     }
 
@@ -365,5 +365,9 @@ button:hover {
 
     .container .mainMenu .buttonContainerLevel, .container .mainMenu .buttonContainerOption {
         height: 30%;
+    }
+
+    .container .mainMenu img {
+        width: 80%;
     }
 }
